@@ -1,12 +1,12 @@
 import tensorflow as tf
 
-from data_loader.data_generator import DataGenerator
-from models.example_model import ExampleModel
-from trainers.example_trainer import ExampleTrainer
-from utils.config import process_config
-from utils.dirs import create_dirs
-from utils.logger import Logger
-from utils.utils import get_args
+from tf_project.data_loader.data_generator import DataGenerator
+from tf_project.models.example_model import ExampleModel
+from tf_project.trainers.example_trainer import ExampleTrainer
+from tf_project.utils.config import process_config
+from tf_project.utils.dirs import create_dirs
+from tf_project.utils.logger import Logger
+from tf_project.utils.utils import get_args
 
 
 def main():
@@ -15,12 +15,12 @@ def main():
     try:
         args = get_args()
         config = process_config(args.config)
-    except:
-        print("Missing or invalid arguments. ")
-        exit(0)
+    except Exception as err:
+        print("Error encountered: {}".format(err))
+        return -1
 
     # Create the experiments dirs.
-    create_dirs([config.summary_dir, config.checkpoint_dir])
+    create_dirs([config.results_dir, config.summary_dir, config.checkpoint_dir])
 
     # Create tensorflow session.
     sess = tf.Session()
@@ -43,6 +43,10 @@ def main():
     # Here you train your model.
     trainer.train()
 
+    # Exit with 0.
+    return 0
+
 
 if __name__ == '__main__':
-    main()
+    exit_status = main()
+    exit(exit_status)

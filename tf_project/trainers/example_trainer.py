@@ -1,10 +1,10 @@
-from base.base_train import BaseTrain
+from tf_project.base.base_train import BaseTrain
 from tqdm import tqdm
 import numpy as np
 
 
 class ExampleTrainer(BaseTrain):
-    def __init__(self, sess, model, data, config,logger):
+    def __init__(self, sess, model, data, config, logger):
         super(ExampleTrainer, self).__init__(sess, model, data, config, logger)
 
     def train_epoch(self):

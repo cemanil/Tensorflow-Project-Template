@@ -1,5 +1,8 @@
 {
-  "exp_name": "example",
+  "data_dir": "/Users/cemanil/Datasets/mnist.pkl",
+  "results_dir": "/Users/cemanil/Outputs/mnist_tests",
+  "exp_description": "The purpose of this experiment is to check if there is an issue with the pipeline while it is under development." ,
+  "exp_name": "train_mnist",
 
   "num_epochs": 10,
   "num_iter_per_epoch": 10,
