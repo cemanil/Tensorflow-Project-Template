@@ -1,0 +1,4 @@
+bunch
+pytest==3.5.1
+tensorflow==1.5
+tqdm

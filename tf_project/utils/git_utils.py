@@ -3,6 +3,7 @@ import subprocess
 
 
 def get_current_commit_id():
+    # TODO: Make sure this command returns the current git commit id.
     sha_bytes = subprocess.check_output(["git", "rev-parse", "HEAD"]).strip()
     sha_str = str(sha_bytes, 'utf-8')
 

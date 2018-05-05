@@ -46,6 +46,8 @@ def main():
     # Here you train your model.
     trainer.train()
 
+    # Close the tensorflow session.
+    sess.close()
     # Exit with 0.
     return 0
 

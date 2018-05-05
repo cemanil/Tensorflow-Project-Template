@@ -1,0 +1,6 @@
+[
+  "test_datagenerator.py::test_datagenerator_init",
+  "test_datagenerator.py::test_datagenerator_num_elements_in_batch",
+  "test_datagenerator.py::test_datagenerator_batch_dim",
+  "test_datagenerator.py::test_datagenerator_next_batch_covers_whole_dataset"
+]
