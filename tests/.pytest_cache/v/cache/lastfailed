@@ -1,0 +1,3 @@
+{
+  "test_datagenerator.py::test_datagenerator_next_batch_covers_whole_dataset": true
+}
