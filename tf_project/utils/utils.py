@@ -7,6 +7,6 @@ def get_args():
         '-c', '--config',
         metavar='C',
         default='None',
-        help='The Configuration file')
+        help='The Configuration file. ')
     args = argparser.parse_args()
     return args

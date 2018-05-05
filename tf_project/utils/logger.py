@@ -3,7 +3,7 @@ import os
 
 
 class Logger:
-    def __init__(self, sess,config):
+    def __init__(self, sess, config):
         self.sess = sess
         self.config = config
         self.summary_placeholders = {}
@@ -12,13 +12,13 @@ class Logger:
                                                           self.sess.graph)
         self.test_summary_writer = tf.summary.FileWriter(os.path.join(self.config.summary_dir, "test"))
 
-    # it can summarize scalars and images.
+    # It can summarize scalars and images.
     def summarize(self, step, summarizer="train", scope="", summaries_dict=None):
         """
-        :param step: the step of the summary
-        :param summarizer: use the train summary writer or the test one
-        :param scope: variable scope
-        :param summaries_dict: the dict of the summaries values (tag,value)
+        :param step: The step of the summary.
+        :param summarizer: Use the train summary writer or the test one.
+        :param scope: Variable scope.
+        :param summaries_dict: The dict of the summaries values (tag, value).
         :return:
         """
         summary_writer = self.train_summary_writer if summarizer == "train" else self.test_summary_writer
@@ -31,7 +31,8 @@ class Logger:
                         if len(value.shape) <= 1:
                             self.summary_placeholders[tag] = tf.placeholder('float32', value.shape, name=tag)
                         else:
-                            self.summary_placeholders[tag] = tf.placeholder('float32', [None] + list(value.shape[1:]), name=tag)
+                            self.summary_placeholders[tag] = tf.placeholder('float32', [None] + list(value.shape[1:]),
+                                                                            name=tag)
                         if len(value.shape) <= 1:
                             self.summary_ops[tag] = tf.summary.scalar(tag, self.summary_placeholders[tag])
                         else:

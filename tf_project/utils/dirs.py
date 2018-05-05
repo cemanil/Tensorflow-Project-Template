@@ -7,10 +7,14 @@ def create_dirs(dirs):
     :param dirs:
     :return exit_code: 0:success -1:failed
     """
+    for dir_ in dirs:
+        create_dir(dir_)
+
+
+def create_dir(directory):
     try:
-        for dir_ in dirs:
-            if not os.path.exists(dir_):
-                os.makedirs(dir_)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         return 0
     except Exception as err:
         print("Creating directories error: {0}".format(err))

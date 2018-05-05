@@ -10,11 +10,11 @@ class TemplateModel(BaseModel):
         self.init_saver()
 
     def build_model(self):
-        # here you build the tensorflow graph of any model you want and also define the loss.
+        # Here you build the tensorflow graph of any model you want and also define the loss.
         pass
 
     def init_saver(self):
-        # here you initialize the tensorflow saver that will be used in saving the checkpoints.
+        # Here you initialize the tensorflow saver that will be used in saving the checkpoints.
         # self.saver = tf.train.Saver(max_to_keep=self.config.max_to_keep)
 
         pass

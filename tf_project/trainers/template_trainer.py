@@ -9,16 +9,16 @@ class TemplateTrainer(BaseTrain):
 
     def train_epoch(self):
         """
-       implement the logic of epoch:
-       -loop on the number of iterations in the config and call the train step
-       -add any summaries you want using the summary
+        Implement the logic of epoch:
+        - Loop on the number of iterations in the config and call the train step.
+        - Add any summaries you want using the summary.
         """
         pass
 
     def train_step(self):
         """
-       implement the logic of the train step
-       - run the tensorflow session
-       - return any metrics you need to summarize
+        Implement the logic of the train step:
+        - Run the tensorflow session.
+        - Return any metrics you need to summarize.
        """
         pass

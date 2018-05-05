@@ -14,7 +14,7 @@ class ExampleModel(BaseModel):
         self.x = tf.placeholder(tf.float32, shape=[None] + self.config.state_size)
         self.y = tf.placeholder(tf.float32, shape=[None, 10])
 
-        # network architecture
+        # Network architecture.
         d1 = tf.layers.dense(self.x, 512, activation=tf.nn.relu, name="dense1")
         d2 = tf.layers.dense(d1, 10, name="dense2")
 
@@ -27,6 +27,6 @@ class ExampleModel(BaseModel):
 
 
     def init_saver(self):
-        # here you initialize the tensorflow saver that will be used in saving the checkpoints.
+        # Here you initialize the tensorflow saver that will be used in saving the checkpoints.
         self.saver = tf.train.Saver(max_to_keep=self.config.max_to_keep)
 
