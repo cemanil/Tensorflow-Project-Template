@@ -3,10 +3,7 @@ import tensorflow as tf
 from tf_project.data_loader.data_generator import DataGenerator
 from tf_project.models.example_model import ExampleModel
 from tf_project.trainers.example_trainer import ExampleTrainer
-from tf_project.utils.config import process_config
-from tf_project.utils.dirs import create_dirs
-from tf_project.utils.logger import Logger
-from tf_project.utils.utils import get_args
+from tf_project.utils import *
 
 
 def main():
@@ -19,8 +16,13 @@ def main():
         print("Error encountered: {}".format(err))
         return -1
 
-    # Create the experiments dirs.
-    create_dirs([config.results_dir, config.summary_dir, config.checkpoint_dir])
+    # Create the results dir.
+    create_dirs([config.results_dir, config.summary_dir, config.checkpoint_dir], override=False)
+
+    # Ensure the reproducibility of the project.
+    set_project_seed(config.seed)
+    copy_file_to_destination(args.config, config.results_dir)
+    save_current_commit_id(config.results_dir)
 
     # Create tensorflow session.
     sess = tf.Session()
@@ -29,7 +31,8 @@ def main():
     model = ExampleModel(config)
 
     # Load model if exists.
-    model.load(sess)
+    if config.load_checkpoint_dir is not None:
+        model.load(sess)
 
     # Create your data generator.
     data = DataGenerator(config)
@@ -49,4 +52,5 @@ def main():
 
 if __name__ == '__main__':
     exit_status = main()
+
     exit(exit_status)

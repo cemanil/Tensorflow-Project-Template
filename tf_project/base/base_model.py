@@ -19,7 +19,7 @@ class BaseModel:
 
     # Load latest checkpoint from the experiment path defined in the config file.
     def load(self, sess):
-        latest_checkpoint = tf.train.latest_checkpoint(self.config.checkpoint_dir)
+        latest_checkpoint = tf.train.latest_checkpoint(self.config.load_checkpoint_dir)
         if latest_checkpoint:
             print("Loading model checkpoint {} ...\n".format(latest_checkpoint))
             self.saver.restore(sess, latest_checkpoint)
